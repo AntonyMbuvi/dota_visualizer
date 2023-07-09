@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Choice Form</title>
+</head>
+<body>
+    <h1>Multiple Choice Form</h1>
+    {% if flash_message %}
+        <div class="flash-message">{{ flash_message }}</div>
+    {% endif %}
+    <form method="POST" action="/">
+        {{ form.csrf_token }}
+        <div>
+            <h3>Options</h3>
+            {% for subfield in form.options %}
+                <label>
+                    {{ subfield(class="checkbox-input") }}
+                    {{ subfield.label.text }}
+                </label>
+            {% endfor %}
+        </div>
+        <br>
+        {{ form.submit() }}
+        
+    </form>
+    
+</body>
+</html>
+
+    
